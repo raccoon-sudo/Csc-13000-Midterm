@@ -12,25 +12,60 @@ int main(){
     "YEAPR UNLWW TKVUL CPJAV BINDZ PTTNN HDTRS RKIVT YAEKL NOLDQ IUMOS TYKAM BHGLG YINTV "
     "LPHFA VPYAC PYLTX UDJLA QWTCN EPBWK MBTSP YNCES TTNYL GGAIY PUECO YSLWE EDKUI NAYTV XLNDU "
     "SSVTM TSPHA EJOAC OJOQF QELGC SHEIW PCQAP WFELG CS";
-
-    string choice;
-    /* We probably do not need to write all 96 keys into a vector so I stopped at the 55 item(suck)
+    
+    /* 93 possible keys */
     vector<string> keys = {"receipt", "vengeful" , "popcorn", "basketball", "friends", "wealth", "interrupt",
     "awesome", "actually", "kindhearted", "nifty", "change", "heat", "squeal", "treatment", "satisfy", "separate", "hot", "serious", 
-    "pail", "request", "request", "different", "righteous", "cat", "cheap", "repair", "uncle", "creepy", "birds", "crook", "great",
+    "pail", "request", "different", "righteous", "cat", "cheap", "repair", "uncle", "creepy", "birds", "crook", "great",
     "ski", "stitch", "example", "flippant", "puzzling", "sleepy", "discover", "excuse", "unbiased", "jail", "eggs", "material",
-    "expand", "equal", "group", "bizzare", "spotted", "embarrass", "produce", "womanly", "spectacular", "agonizing", "cows", "suck"};
-    */
+    "expand", "equal", "group", "bizzare", "spotted", "embarrass", "produce", "womanly", "spectacular", "agonizing", "cows", "suck", 
+    "ritzy", "hole", "sail", "dam", "seperate", "fumbling", "mushy", "unite", "economic", "clean", "auspicious", "beds", "sweltering", 
+    "crazy", "wise", "unknown", "adorable", "versed", "supreme", "store", "tour", "substantial", "record", "impolite", "birth", "tender", 
+    "unequal", "line", "connection", "shade", "nervous", "attraction", "argue", "finger", "carriage", "destruction", "afterthought", "stick"};
+    
+    string choice;
 
     cout << "Would you like to decrypt the text(D) or encrypt your own(E). Please only enter E or D\n";
-    getline(cin , choice);
-
+    cin >> choice;
+    
+    while(choice != "E" && choice != "D"){
+        cout << "Please only enter E or D\n";
+        cin >> choice;
+    }
 
     if(choice == "E"){
 
     }
     else{
+        
+        int counter = 0; //to skip the spaces in encrypted text
 
+        for (unsigned int i = 0; i < keys.size(); i++){ //Iterate though the keys
+
+            cout << keys.at(i) << ": ";
+            
+            for (unsigned int j = 0; j < ENCRYPTEDTEXT.length(); j++){ //Iterate throught the encrypted text
+                if (isalpha(ENCRYPTEDTEXT.at(j))) { //Check if it is a letter
+                    
+                    int k = counter % keys.at(i).length(); //Get the shift letter
+                    char c = ENCRYPTEDTEXT.at(j) - 65; //Convert to 0-25
+                    c = ((c - (keys.at(i).at(k) - 97) + 26) % 26) + 65; //Get the decrypted letter
+
+                    counter++;
+
+                    cout << c; //Print the decrypted letter
+                    
+                }
+                else {
+                    
+                    cout << " "; //Print the space
+                    
+                }
+            }
+            
+            cout << endl << endl;
+            
+        }
     }
 
     return 0;
