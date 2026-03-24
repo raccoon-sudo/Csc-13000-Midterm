@@ -37,13 +37,30 @@ int main(){
 
     }
     else{
+        vector<double> occurrences(26, 0);
+
+        cout << "\nFrequency Analysis: \n";
+
+        for(int i = 0; i < ENCRYPTEDTEXT.size(); i++){
+            char letter = ENCRYPTEDTEXT.at(i);
+            if(isalpha(letter)){
+                occurrences.at(letter - 65)++;
+            }
+        }
+
+        for(int i = 0; i < occurrences.size(); i++){
+            char a = i + 65;
+            cout << a << " : " << (occurrences.at(i) / ENCRYPTEDTEXT.size()) * 100 << "%\n";
+        }
+        //We would preferably sleep the thread for like 5 seconds but I have to ask the professor on Wednesday 
+        //if I can include the appropiate header file
         
         int counter = 0; //to skip the spaces in encrypted text
 
         for (unsigned int i = 0; i < keys.size(); i++){ //Iterate though the keys
 
             cout << keys.at(i) << ": ";
-            
+            //key is actually
             for (unsigned int j = 0; j < ENCRYPTEDTEXT.length(); j++){ //Iterate throught the encrypted text
                 if (isalpha(ENCRYPTEDTEXT.at(j))) { //Check if it is a letter
                     
