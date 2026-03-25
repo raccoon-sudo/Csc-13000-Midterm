@@ -131,6 +131,7 @@ int main(){
         }
     }
     else{
+        cout << "Brute Force Through All Possible Keys:\n";
         
         int counter = 0; //to skip the spaces in encrypted text
 
@@ -169,7 +170,22 @@ int main(){
             char a = i + 65;
             cout << a << " : " << (occurrences.at(i) / ENCRYPTEDTEXT.size()) * 100 << "%\n";
         }
+
+        cout << endl;
+    
+        cout << "Correct key is: actually\n";
+        cout << "plaintext: The analytical engine has no pretensions whatever to originate anything it can do whatever we knoow to order" 
+        " it to perform it can follow analysis but it has no power of anticipating any analytical relations or truths its province is to "
+        "assist us in making available what we are already acquainted with the analytical engine weaves algebraic patterns just as the jacquard loom weaves flowers and leaves\n";
         
+        /*The analytical engine has no pretensions whatever to originate anything it can do whatever we know to order 
+        it to perform it can follow analysis but it has no power of anticipating any analytical relations or truths its province is to 
+        assist us in making available what we are already acquainted with the analytical engine weaves algebraic patterns just as the jacquard loom weaves flowers and leaves*/
+
+        /*THEAN ALYTI CALEN GINEH ASNOP RETEN SIONS WHATE VERTO ORIGI NATEA NYTHI NGITC
+        ANDOW HATEV ERWEK NOWHO WTOOR DERIT TOPER FORMI TCANF OLLOW ANALY SISBU TITHA SNOPO WEROF ANTIC IPATI 
+        NGANY ANALY TICAL RELAT IONSO RTRUT HSITS PROVI NCEIS TOASS ISTUS INMAK INGAV AILAB LEWHA TWEAR EALRE ADYAC 
+        QUAIN TEDWI THTHE ANALY TICAL ENGIN EWEAV ESALG EBRAI CPATT ERNSJ USTAS THEJA CQUAR DLOOM WEAVE SFLOW ERSAN DLEAV ES*/
     }
 
     return 0;
