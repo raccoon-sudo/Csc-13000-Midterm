@@ -8,7 +8,7 @@ using namespace std;
 
 int main(){
     unsigned long previousRandom = 1;
-    //time_t is the type that time returns
+    //time_t is the type that time returns. Got that from the offical C++ Documentation https://en.cppreference.com/w/cpp/chrono/c/time.html
     const time_t CURRENTTIME = time(0);
 
     const string ENCRYPTEDTEXT = "TJXUN LWWTK VULPY EIPXB ADYMP TXNEY DGOPL "
@@ -121,28 +121,16 @@ int main(){
                     }
                 }
             }
+
+            for(int i = 0; i < letterShifts.size(); i++){
+                cout << letterShifts.at(i) << "\n";
+            }
         }
         else{
             cout << "Text is either all symbols or empty so no letter shifts were used\n";
         }
     }
     else{
-        vector<double> occurrences(26, 0);
-        cout << "\nFrequency Analysis: \n";
-
-        for(int i = 0; i < ENCRYPTEDTEXT.size(); i++){
-            char letter = ENCRYPTEDTEXT.at(i);
-            if(isalpha(letter)){
-                occurrences.at(letter - 65)++;
-            }
-        }
-
-        for(int i = 0; i < occurrences.size(); i++){
-            char a = i + 65;
-            cout << a << " : " << (occurrences.at(i) / ENCRYPTEDTEXT.size()) * 100 << "%\n";
-        }
-        //We would preferably sleep the thread for like 5 seconds but I have to ask the professor on Wednesday 
-        //if I can include the appropiate header file
         
         int counter = 0; //to skip the spaces in encrypted text
 
@@ -166,6 +154,22 @@ int main(){
             
             cout << endl << endl;
         }
+
+        vector<double> occurrences(26, 0);
+        cout << "\nFrequency Analysis of Encrypted Text: \n";
+
+        for(int i = 0; i < ENCRYPTEDTEXT.size(); i++){
+            char letter = ENCRYPTEDTEXT.at(i);
+            if(isalpha(letter)){
+                occurrences.at(letter - 65)++;
+            }
+        }
+
+        for(int i = 0; i < occurrences.size(); i++){
+            char a = i + 65;
+            cout << a << " : " << (occurrences.at(i) / ENCRYPTEDTEXT.size()) * 100 << "%\n";
+        }
+        
     }
 
     return 0;
